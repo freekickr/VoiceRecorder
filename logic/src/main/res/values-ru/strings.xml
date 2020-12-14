@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Recorder</string>
+    <string name="record">Запись</string>
+    <string name="list">Файлы</string>
+
+    <string name="default_filename">record</string>
+    <string name="record_saved">Запись сохранена</string>
+    <string name="notif_recording">Идет запись…</string>
+    <string name="toast_record_started">Запись началась</string>
+    <string name="file_doesnt_exist">Файл не существует</string>
+    <string name="file_deleted">Файл удален</string>
+    <string name="dialog_delete_title">Подтвердите удаление</string>
+    <string name="dialog_delete_text">Удалить запись?</string>
+    <string name="dialog_yes">Да</string>
+    <string name="dialog_no">Нет</string>
+
+    <string name="notif_toast_no_permissions">Без предоставленного разрешения запись невозможна</string>
+    <string name="notif_channel_id">FreekickrVoiceRecorderService</string>
+    <string name="notif_channel_name">FreekickrRecorder</string>
+</resources>

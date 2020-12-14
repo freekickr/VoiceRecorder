@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.freekickr.core.App
 import com.freekickr.core.tools.Toaster
 import com.freekickr.logic.database.daos.RecordDao
-import com.freekickr.logic.presentation.viewmodels.PlayerViewModel
 import com.freekickr.logic.presentation.viewmodels.RecordViewModel
 import com.freekickr.logic.presentation.viewmodels.RecordsListViewModel
 import com.freekickr.logic.presentation.viewmodels.RemoveRecordDialogViewModel
