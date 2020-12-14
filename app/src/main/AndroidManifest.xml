@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.freekickr.recorder">
+
+    <application
+        android:name="com.freekickr.recorder.AppImpl"
+        android:theme="@style/AppTheme"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher_background"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_launcher_background"
+        android:supportsRtl="true"
+        tools:ignore="AllowBackup"
+        android:usesCleartextTraffic="true"/>
+
+</manifest>
