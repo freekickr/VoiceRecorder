@@ -17,6 +17,7 @@
     <string name="dialog_ok">ОК</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="enter_filename">Enter file name:</string>
+    <string name="file_renamed">File renamed</string>
 
     <string name="notif_toast_no_permissions">Recording is unavailable because no permissions have been granted</string>
     <string name="notif_channel_id">FreekickrVoiceRecorderService</string>

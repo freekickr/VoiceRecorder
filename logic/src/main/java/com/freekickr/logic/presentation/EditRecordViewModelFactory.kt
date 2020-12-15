@@ -3,6 +3,7 @@ package com.freekickr.logic.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.freekickr.core.App
+import com.freekickr.core.tools.Toaster
 import com.freekickr.logic.database.daos.RecordDao
 import com.freekickr.logic.presentation.viewmodels.EditRecordDialogViewModel
 import com.freekickr.logic.presentation.viewmodels.PlayerViewModel
@@ -13,11 +14,12 @@ import javax.inject.Inject
 class EditRecordViewModelFactory @Inject constructor(
     private val app: App,
     private var itemId: Long,
-    private val databaseDao: RecordDao
+    private val databaseDao: RecordDao,
+    private val toaster: Toaster
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when(modelClass) {
-            EditRecordDialogViewModel::class.java -> EditRecordDialogViewModel(app, itemId, databaseDao) as T
+            EditRecordDialogViewModel::class.java -> EditRecordDialogViewModel(app, itemId, databaseDao, toaster) as T
             else -> throw IllegalArgumentException("Can't find viewmodel for class $modelClass")
         }
     }

@@ -15,6 +15,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.freekickr.core.App
 import com.freekickr.core.di.ApplicationProvider
+import com.freekickr.core.tools.Toaster
 import com.freekickr.logic.R
 import com.freekickr.logic.dagger.di.AppActivityComponent
 import com.freekickr.logic.database.daos.RecordDao
@@ -51,6 +52,9 @@ class EditRecordDialogFragment : DialogFragment() {
     @Inject
     lateinit var databaseDao: RecordDao
 
+    @Inject
+    lateinit var toaster: Toaster
+
     private lateinit var viewModel: EditRecordDialogViewModel
 
 //    @Inject
@@ -69,7 +73,7 @@ class EditRecordDialogFragment : DialogFragment() {
         val itemId = arguments?.getLong(ARG_ITEM_ID)
 
         itemId?.let {
-            EditRecordViewModelFactory(app, itemId, databaseDao)
+            EditRecordViewModelFactory(app, itemId, databaseDao, toaster)
         }?.let {factory ->
             viewModel = ViewModelProvider(this, factory).get(EditRecordDialogViewModel::class.java)
         }
@@ -84,7 +88,6 @@ class EditRecordDialogFragment : DialogFragment() {
         return builder
             .setCancelable(false)
             .setPositiveButton(getString(R.string.dialog_ok)) { dialog, _ ->
-                Toast.makeText(requireContext(), viewModel.fileName.get(), Toast.LENGTH_SHORT).show()
                 try {
                     itemId?.let { viewModel.editItem() }
                 } catch (e: Exception) {

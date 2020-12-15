@@ -18,7 +18,8 @@ import javax.inject.Inject
 class EditRecordDialogViewModel @Inject constructor(
     private val app: App,
     private val itemId: Long,
-    private val databaseDao: RecordDao
+    private val databaseDao: RecordDao,
+    private val toaster: Toaster
 ) : ViewModel() {
 
     private var job = Job()
@@ -52,7 +53,6 @@ class EditRecordDialogViewModel @Inject constructor(
 
     fun editItem() {
         fileName.get()?.let { newName ->
-            Log.d("DEBUG", File(record.filePath).absolutePath)
             val newPath = renameFile(newName)
             newPath?.let {
                 updateEntry(it)
@@ -64,9 +64,18 @@ class EditRecordDialogViewModel @Inject constructor(
         try {
             uiScope.launch {
                 withContext(Dispatchers.IO) {
-                    databaseDao.update(RecordItem(record.id, File(newPath).name, newPath, record.length, record.time))
+                    databaseDao.update(
+                        RecordItem(
+                            record.id,
+                            File(newPath).name,
+                            newPath,
+                            record.length,
+                            record.time
+                        )
+                    )
                 }
             }
+            toaster.show(app.getApplicationContext().getString(R.string.file_renamed))
         } catch (e: Exception) {
             Log.e("EditItem", "exception", e)
         }

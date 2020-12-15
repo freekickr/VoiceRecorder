@@ -17,6 +17,7 @@
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Отмена</string>
     <string name="enter_filename">Введите имя файла:</string>
+    <string name="file_renamed">Файл переименован</string>
 
     <string name="notif_toast_no_permissions">Без предоставленного разрешения запись невозможна</string>
     <string name="notif_channel_id">FreekickrVoiceRecorderService</string>
