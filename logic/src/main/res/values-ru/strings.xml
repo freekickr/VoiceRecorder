@@ -14,6 +14,9 @@
     <string name="dialog_delete_text">Удалить запись?</string>
     <string name="dialog_yes">Да</string>
     <string name="dialog_no">Нет</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Отмена</string>
+    <string name="enter_filename">Введите имя файла:</string>
 
     <string name="notif_toast_no_permissions">Без предоставленного разрешения запись невозможна</string>
     <string name="notif_channel_id">FreekickrVoiceRecorderService</string>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.views.EditRecordDialogFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.freekickr.logic.presentation.viewmodels.EditRecordDialogViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etSaveFileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_filename"
+            android:text="@{viewModel.fileName}"
+            android:setTextWatcher="@{viewModel.textWatcher}"/>
+
+    </LinearLayout>
+
+</layout>

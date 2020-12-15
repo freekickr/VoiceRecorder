@@ -14,6 +14,9 @@
     <string name="dialog_delete_text">Delete this record?</string>
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">No</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="enter_filename">File name:</string>
 
     <string name="notif_toast_no_permissions">Recording is unavailable because no permissions have been granted</string>
     <string name="notif_channel_id">FreekickrVoiceRecorderService</string>

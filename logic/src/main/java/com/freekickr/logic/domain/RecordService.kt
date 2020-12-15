@@ -148,7 +148,6 @@ class RecordService : Service() {
         if (mRecorder != null) {
             stopRecording()
         }
-
         super.onDestroy()
     }
 

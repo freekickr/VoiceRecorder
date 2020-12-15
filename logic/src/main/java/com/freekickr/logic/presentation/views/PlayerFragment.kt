@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.freekickr.core.App
 import com.freekickr.core.di.ApplicationProvider
 import com.freekickr.logic.R
 import com.freekickr.logic.dagger.di.AppActivityComponent
+import com.freekickr.logic.database.daos.RecordDao
 import com.freekickr.logic.presentation.PlayerViewModelFactory
 import com.freekickr.logic.presentation.viewmodels.PlayerViewModel
 import kotlinx.android.synthetic.main.fragment_player.*
@@ -21,7 +21,7 @@ import javax.inject.Inject
 class PlayerFragment : DialogFragment() {
 
     companion object {
-        private const val ARG_ITEM_PATH = "recording_item"
+        private const val ARG_ITEM_PATH = "recording_item_path"
 
         fun newInstance(itemPath: String?): PlayerFragment {
             val fragment = PlayerFragment()
@@ -35,6 +35,9 @@ class PlayerFragment : DialogFragment() {
 
     @Inject
     lateinit var app: App
+
+    @Inject
+    lateinit var databaseDao: RecordDao
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

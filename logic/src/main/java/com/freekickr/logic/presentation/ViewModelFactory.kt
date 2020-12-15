@@ -8,6 +8,7 @@ import com.freekickr.logic.database.daos.RecordDao
 import com.freekickr.logic.presentation.viewmodels.RecordViewModel
 import com.freekickr.logic.presentation.viewmodels.RecordsListViewModel
 import com.freekickr.logic.presentation.viewmodels.RemoveRecordDialogViewModel
+import com.freekickr.logic.presentation.viewmodels.EditRecordDialogViewModel
 import java.lang.IllegalArgumentException
 import javax.inject.Inject
 

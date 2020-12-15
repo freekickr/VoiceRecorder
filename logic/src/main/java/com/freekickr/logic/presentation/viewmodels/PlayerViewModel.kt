@@ -3,6 +3,7 @@ package com.freekickr.logic.presentation.viewmodels
 import android.net.Uri
 import androidx.lifecycle.*
 import com.freekickr.core.App
+import com.freekickr.logic.database.daos.RecordDao
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -11,7 +12,7 @@ import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 
-class PlayerViewModel(private val app: App, private val itemPath: String) : AndroidViewModel(app.getApplication()),
+class PlayerViewModel(app: App, private val itemPath: String,) : AndroidViewModel(app.getApplication()),
     LifecycleObserver {
     private val _player = MutableLiveData<Player?>()
     val player: LiveData<Player?>

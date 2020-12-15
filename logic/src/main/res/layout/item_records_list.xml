@@ -57,9 +57,16 @@
                     android:layout_marginTop="5dp"
                     tools:text="00:00"
                     android:textSize="12sp"/>
-
-
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageViewEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="7dp"
+                android:src="@drawable/ic_edit_36"
+                app:tint="@android:color/darker_gray"/>
 
             <ImageView
                 android:id="@+id/imageViewDelete"

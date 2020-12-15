@@ -13,9 +13,9 @@ import java.lang.Exception
 import javax.inject.Inject
 
 class RemoveRecordDialogViewModel @Inject constructor(
-    val app: App,
-    val databaseDao: RecordDao,
-    val toaster: Toaster
+    private val app: App,
+    private val databaseDao: RecordDao,
+    private val toaster: Toaster
 ) : ViewModel() {
 
     private var job = Job()

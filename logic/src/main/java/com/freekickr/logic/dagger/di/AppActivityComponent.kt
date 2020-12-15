@@ -2,6 +2,7 @@ package com.freekickr.logic.dagger.di
 
 import com.freekickr.core.di.ApplicationProvider
 import com.freekickr.logic.MainActivity
+import com.freekickr.logic.presentation.views.EditRecordDialogFragment
 import com.freekickr.logic.domain.RecordService
 import com.freekickr.logic.presentation.views.PlayerFragment
 import com.freekickr.logic.presentation.views.RecordFragment
@@ -20,6 +21,7 @@ interface AppActivityComponent {
     fun inject(fragment: RecordsListFragment)
     fun inject(fragment: PlayerFragment)
     fun inject(fragment: RemoveRecordDialogFragment)
+    fun inject(fragment: EditRecordDialogFragment)
 
     class Initializer private constructor() {
         companion object {
