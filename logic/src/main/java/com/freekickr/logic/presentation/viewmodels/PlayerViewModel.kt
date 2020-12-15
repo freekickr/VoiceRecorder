@@ -12,17 +12,14 @@ import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 
-class PlayerViewModel(app: App, private val itemPath: String,) : AndroidViewModel(app.getApplication()),
+class PlayerViewModel(app: App) : AndroidViewModel(app.getApplication()),
     LifecycleObserver {
     private val _player = MutableLiveData<Player?>()
     val player: LiveData<Player?>
         get() = _player
     private var contentPosition = 0L
     private var playWhenReady = true
-
-    init {
-        ProcessLifecycleOwner.get().lifecycle.addObserver(this)
-    }
+    private lateinit var itemPath: String
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onForegrounded() {
@@ -32,6 +29,11 @@ class PlayerViewModel(app: App, private val itemPath: String,) : AndroidViewMode
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun onBackgrounded() {
         releaseExoPlayer()
+    }
+
+    fun initData(path: String) {
+        itemPath = path
+        ProcessLifecycleOwner.get().lifecycle.addObserver(this)
     }
 
     private fun setupPlayer() {

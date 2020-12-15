@@ -4,30 +4,20 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.freekickr.core.App
 import com.freekickr.core.di.ApplicationProvider
-import com.freekickr.core.tools.Toaster
 import com.freekickr.logic.R
 import com.freekickr.logic.dagger.di.AppActivityComponent
-import com.freekickr.logic.database.daos.RecordDao
 import com.freekickr.logic.databinding.FragmentEditRecordDialogBinding
-import com.freekickr.logic.presentation.EditRecordViewModelFactory
-import com.freekickr.logic.presentation.PlayerViewModelFactory
 import com.freekickr.logic.presentation.ViewModelFactory
 import com.freekickr.logic.presentation.viewmodels.EditRecordDialogViewModel
-import com.freekickr.logic.presentation.viewmodels.PlayerViewModel
 import kotlinx.android.synthetic.main.fragment_edit_record_dialog.*
 import kotlinx.android.synthetic.main.fragment_player.*
-import java.io.File
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -47,22 +37,11 @@ class EditRecordDialogFragment : DialogFragment() {
     }
 
     @Inject
-    lateinit var app: App
+    lateinit var viewModelFactory: ViewModelFactory
 
-    @Inject
-    lateinit var databaseDao: RecordDao
-
-    @Inject
-    lateinit var toaster: Toaster
-
-    private lateinit var viewModel: EditRecordDialogViewModel
-
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelFactory
-//
-//    private val viewModel: EditRecordDialogViewModel by lazy {
-//        ViewModelProvider(this, viewModelFactory).get(EditRecordDialogViewModel::class.java)
-//    }
+    private val viewModel: EditRecordDialogViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(EditRecordDialogViewModel::class.java)
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -73,9 +52,7 @@ class EditRecordDialogFragment : DialogFragment() {
         val itemId = arguments?.getLong(ARG_ITEM_ID)
 
         itemId?.let {
-            EditRecordViewModelFactory(app, itemId, databaseDao, toaster)
-        }?.let {factory ->
-            viewModel = ViewModelProvider(this, factory).get(EditRecordDialogViewModel::class.java)
+            viewModel.initData(it)
         }
 
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_edit_record_dialog, null)

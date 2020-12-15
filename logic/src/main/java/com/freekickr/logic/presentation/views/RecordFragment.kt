@@ -39,9 +39,6 @@ class RecordFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
-    lateinit var databaseDao: RecordDao
-
-    @Inject
     lateinit var toaster: Toaster
 
     private val PERMISSIONS_RECORD_AUDIO = 123

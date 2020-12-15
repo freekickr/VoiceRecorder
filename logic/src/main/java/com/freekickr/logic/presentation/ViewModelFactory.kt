@@ -5,10 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.freekickr.core.App
 import com.freekickr.core.tools.Toaster
 import com.freekickr.logic.database.daos.RecordDao
-import com.freekickr.logic.presentation.viewmodels.RecordViewModel
-import com.freekickr.logic.presentation.viewmodels.RecordsListViewModel
-import com.freekickr.logic.presentation.viewmodels.RemoveRecordDialogViewModel
-import com.freekickr.logic.presentation.viewmodels.EditRecordDialogViewModel
+import com.freekickr.logic.presentation.viewmodels.*
 import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
@@ -23,6 +20,8 @@ class ViewModelFactory @Inject constructor(
             RecordViewModel::class.java -> RecordViewModel(app) as T
             RecordsListViewModel::class.java -> RecordsListViewModel(databaseDao) as T
             RemoveRecordDialogViewModel::class.java -> RemoveRecordDialogViewModel(app, databaseDao, toaster) as T
+            EditRecordDialogViewModel::class.java -> EditRecordDialogViewModel(app, databaseDao, toaster) as T
+            PlayerViewModel::class.java -> PlayerViewModel(app) as T
             else -> throw IllegalArgumentException("Can't find viewmodel for class $modelClass")
         }
     }

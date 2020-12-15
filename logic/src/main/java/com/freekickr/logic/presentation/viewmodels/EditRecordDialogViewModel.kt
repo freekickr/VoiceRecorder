@@ -14,16 +14,17 @@ import kotlinx.coroutines.*
 import java.io.File
 import java.lang.Exception
 import javax.inject.Inject
+import kotlin.properties.Delegates
 
 class EditRecordDialogViewModel @Inject constructor(
     private val app: App,
-    private val itemId: Long,
     private val databaseDao: RecordDao,
     private val toaster: Toaster
 ) : ViewModel() {
 
     private var job = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + job)
+    private var itemId by Delegates.notNull<Long>()
 
     val fileName = ObservableField("")
     private lateinit var record: RecordItem
@@ -39,16 +40,8 @@ class EditRecordDialogViewModel @Inject constructor(
         }
     }
 
-    val textWatcher = object : TextWatcher {
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            s?.let {
-                fileName.set(it.toString())
-            }
-        }
-
-        override fun afterTextChanged(s: Editable?) {}
+    fun initData(id: Long) {
+        itemId = id
     }
 
     fun editItem() {

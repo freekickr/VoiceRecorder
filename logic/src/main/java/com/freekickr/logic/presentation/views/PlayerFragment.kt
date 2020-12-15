@@ -12,8 +12,7 @@ import com.freekickr.core.App
 import com.freekickr.core.di.ApplicationProvider
 import com.freekickr.logic.R
 import com.freekickr.logic.dagger.di.AppActivityComponent
-import com.freekickr.logic.database.daos.RecordDao
-import com.freekickr.logic.presentation.PlayerViewModelFactory
+import com.freekickr.logic.presentation.ViewModelFactory
 import com.freekickr.logic.presentation.viewmodels.PlayerViewModel
 import kotlinx.android.synthetic.main.fragment_player.*
 import javax.inject.Inject
@@ -34,10 +33,11 @@ class PlayerFragment : DialogFragment() {
     }
 
     @Inject
-    lateinit var app: App
+    lateinit var viewModelFactory: ViewModelFactory
 
-    @Inject
-    lateinit var databaseDao: RecordDao
+    private val viewModel: PlayerViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(PlayerViewModel::class.java)
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -55,15 +55,12 @@ class PlayerFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val itemPath = arguments?.getString(ARG_ITEM_PATH)
         playerView.showTimeoutMs = 0
-
         itemPath?.let {
-            PlayerViewModelFactory(app, it)
-        }?.let {factory ->
-            val viewModel = ViewModelProvider(this, factory).get(PlayerViewModel::class.java)
-            viewModel.player.observe(viewLifecycleOwner, Observer {
-                playerView.player = it
-            })
+            viewModel.initData(it)
         }
+        viewModel.player.observe(viewLifecycleOwner, Observer {player ->
+            playerView.player = player
+        })
     }
 
     private fun inject(applicationProvider: ApplicationProvider) {
