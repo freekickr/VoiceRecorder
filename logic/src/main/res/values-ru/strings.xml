@@ -16,6 +16,8 @@
     <string name="dialog_no">Нет</string>
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Отмена</string>
+    <string name="rename">Переименовать</string>
+    <string name="delete">Удалить</string>
     <string name="enter_filename">Введите имя файла:</string>
     <string name="file_renamed">Файл переименован</string>
 

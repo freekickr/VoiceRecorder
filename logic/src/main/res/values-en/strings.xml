@@ -16,6 +16,8 @@
     <string name="dialog_no">No</string>
     <string name="dialog_ok">ОК</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="rename">Rename</string>
+    <string name="delete">Delete</string>
     <string name="enter_filename">Enter file name:</string>
     <string name="file_renamed">File renamed</string>
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
@@ -16,6 +17,7 @@ import com.freekickr.logic.presentation.views.RemoveRecordDialogFragment
 import kotlinx.android.synthetic.main.item_records_list.view.*
 import java.io.File
 import java.lang.Exception
+import java.lang.IllegalArgumentException
 import java.util.concurrent.TimeUnit
 
 class RecordsListAdapter : RecyclerView.Adapter<RecordsViewHolder>() {
@@ -61,13 +63,8 @@ class RecordsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) 
                 Toast.makeText(view.context, R.string.file_doesnt_exist, Toast.LENGTH_SHORT).show()
             }
         }
-
-        view.ivDelete.setOnClickListener {
-            removeItemDialog(record, view.context)
-        }
-
-        view.ivEdit.setOnClickListener {
-            editItemDialog(record, view.context)
+        view.ivMore.setOnClickListener {
+            moreDialog(record, view.context, it)
         }
     }
 
@@ -99,5 +96,24 @@ class RecordsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) 
             .supportFragmentManager
             .beginTransaction()
         editDialogFragment.show(transaction, "dialog_edit")
+    }
+
+    private fun moreDialog(recordItem: RecordItem, context: Context?, view: View) {
+        val popup = PopupMenu(context, view)
+        popup.inflate(R.menu.menu_more_popup)
+        popup.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.popupRename -> {
+                    editItemDialog(recordItem, context)
+                    false
+                }
+                R.id.popupDelete -> {
+                    removeItemDialog(recordItem, context)
+                    false
+                }
+                else -> { throw IllegalArgumentException("popup menu illegal argument")}
+            }
+        }
+        popup.show()
     }
 }
