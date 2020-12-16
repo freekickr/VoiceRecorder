@@ -22,7 +22,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/ivRecord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -60,7 +60,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/imageViewEdit"
+                android:id="@+id/ivEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -69,7 +69,7 @@
                 app:tint="@android:color/darker_gray"/>
 
             <ImageView
-                android:id="@+id/imageViewDelete"
+                android:id="@+id/ivDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

@@ -48,7 +48,7 @@ class RecordsListFragment : Fragment() {
 
         binding.viewModel = viewModel
         val adapter = RecordsListAdapter()
-        binding.recyclerView.adapter = adapter
+        binding.rvRecordsList.adapter = adapter
 
         viewModel.records.observe(viewLifecycleOwner, Observer {
             it?.let {

@@ -62,11 +62,11 @@ class RecordsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) 
             }
         }
 
-        view.imageViewDelete.setOnClickListener {
+        view.ivDelete.setOnClickListener {
             removeItemDialog(record, view.context)
         }
 
-        view.imageViewEdit.setOnClickListener {
+        view.ivEdit.setOnClickListener {
             editItemDialog(record, view.context)
         }
     }
